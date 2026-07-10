@@ -1,8 +1,11 @@
 package com.munte.restful_web_services.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -23,11 +26,26 @@ public class MyUsersController {
 
     @GetMapping("/{id}")
     public MyUser getUserById(@PathVariable(name = "id") Integer myUserId) {
-        return service.findOne(myUserId);
+        MyUser user = service.findOne(myUserId);
+
+        if(user==null)
+        {
+            throw new UserNotFoundException("id:" + myUserId);
+        }
+
+        return user;
     }
 
     @PostMapping()
-    public void createUser(@RequestBody MyUser newUser) {
-        service.createNewUser(newUser);
+    public ResponseEntity<MyUser> createUser(@RequestBody MyUser newUser) {
+        MyUser savedUser = service.createNewUser(newUser);
+
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(savedUser.getId())
+                .toUri();
+
+        return ResponseEntity.created(location).build();
     }
 }
