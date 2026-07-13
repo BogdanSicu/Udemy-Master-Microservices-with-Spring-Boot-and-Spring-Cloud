@@ -1,4 +1,4 @@
-package com.munte.restful_web_services.user;
+package com.munte.restful_web_services.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

@@ -1,5 +1,6 @@
 package com.munte.restful_web_services.user;
 
+import com.munte.restful_web_services.exceptions.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
