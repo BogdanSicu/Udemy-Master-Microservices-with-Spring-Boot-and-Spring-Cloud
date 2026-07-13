@@ -1,10 +1,15 @@
 package com.munte.restful_web_services.user;
 
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDate;
 
 public class MyUser {
     private Integer id;
+    @Size(min = 2, max = 100, message = "minimum length: 2")
     private String name;
+    @Past(message = "you can't be born in the future")
     private LocalDate birthDate;
 
     public MyUser(Integer id, String name, LocalDate birthDate) {

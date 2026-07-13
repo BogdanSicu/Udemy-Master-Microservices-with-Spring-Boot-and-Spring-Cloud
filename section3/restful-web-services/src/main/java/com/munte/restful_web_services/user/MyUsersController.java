@@ -1,6 +1,7 @@
 package com.munte.restful_web_services.user;
 
 import com.munte.restful_web_services.exceptions.UserNotFoundException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +38,7 @@ public class MyUsersController {
     }
 
     @PostMapping()
-    public ResponseEntity<MyUser> createUser(@RequestBody MyUser newUser) {
+    public ResponseEntity<MyUser> createUser(@Valid @RequestBody MyUser newUser) {
         MyUser savedUser = service.createNewUser(newUser);
 
         URI location = ServletUriComponentsBuilder
