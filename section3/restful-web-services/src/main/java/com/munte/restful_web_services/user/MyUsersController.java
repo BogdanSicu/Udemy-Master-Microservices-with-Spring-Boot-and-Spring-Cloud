@@ -29,8 +29,7 @@ public class MyUsersController {
     public MyUser getUserById(@PathVariable(name = "id") Integer myUserId) {
         MyUser user = service.findOne(myUserId);
 
-        if(user==null)
-        {
+        if (user == null) {
             throw new UserNotFoundException("id:" + myUserId);
         }
 
@@ -48,5 +47,10 @@ public class MyUsersController {
                 .toUri();
 
         return ResponseEntity.created(location).build();
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable(name = "id") Integer myUserId) {
+        service.deleteById(myUserId);
     }
 }
