@@ -23,3 +23,16 @@ NOTE: Spring Boot 4 has changed dependencies a little bit compared to version 3 
   - Can we execute the request on the browser?
   - API Documentation
   - Summary: No Perfect Solution
+- Another type of versioning is the Spring Boot Versioning - same options !!! Only one enabled at a time - it is global !!! 
+  - spring.mvc.apiversion.use.path-segment 
+    - you need to add "spring.mvc.apiversion.use.path-segment={position of the version value inside the URI}" inside the application.properties
+    - ex: /2.0.0/person-sbi -> the version is on position 0
+  - spring.mvc.apiversion.use.query-parameter
+    - you need to add spring.mvc.apiversion.use.query-parameter={name of the query parameter} inside the application.properties
+    - ex: params: { key: version, value: 1.0.0 }
+  - spring.mvc.apiversion.use.header={name of the header parameter} 
+    - it is very similar to the *query-parameter* one -> it uses the same code implementation
+    - ex: headers: { key: X-API-VERSION, value: 2.0.0 }
+  - spring.mvc.apiversion.use.media-type-parameter[application/json]={name of the media-type}
+    - it is very similar to *query-parameter* -> it uses the same code implementation
+    - ex: headers: { key: Accept, value: application/json;version=2 }
