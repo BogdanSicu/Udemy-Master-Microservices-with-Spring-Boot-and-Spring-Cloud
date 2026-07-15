@@ -9,9 +9,17 @@
 NOTE: Spring Boot 4 has changed dependencies a little bit compared to version 3 - Spring Boot 4 is more modular now - you need to be more specific on what you want to bring into your project
 
 - internationalization messages need the default messages.properties, otherwise it will always go to the default message, no matter if there are other messages properties files like messages_fr.properties
-- - it also needs Accept-Language header on the request
+  - it also needs Accept-Language header on the request
 
 - swagger is enabled by default if the dependency is added -> it is accessed via {host}/swagger-ui/index.html#/
 
 - to enable Content Negotiation for XML you need the "jackson-dataformat-xml" dependency 
-- - it's also needed to specify inside the headers the "Accept" -> application/xml
+  - it's also needed to specify inside the headers the "Accept" -> application/xml
+
+- Versioning factors to consider:
+  - URI pollution
+  - Misuse of HTTP Headers
+  - Caching 
+  - Can we execute the request on the browser?
+  - API Documentation
+  - Summary: No Perfect Solution
