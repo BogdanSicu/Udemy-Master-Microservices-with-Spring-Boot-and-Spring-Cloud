@@ -47,6 +47,12 @@ NOTE: Spring Boot 4 has changed dependencies a little bit compared to version 3 
     - Spring HATEOAS: Generate HAL responses with hyperlinks to resources
 
 
-- Monitoring APIs - add spring-boot-starter-actuator dependency inside pom.xml
+- Monitoring APIs 
+  - add spring-boot-starter-actuator dependency inside pom.xml
   - it is accessed at {host}/actuator
   - for more details you can add "management.endpoints.web.exposure.include=*" inside application.properties
+
+
+- Exploring your API with HAL
+  - add *spring-data-rest-hal-explorer* and *spring-boot-starter-data-rest* dependencies inside pom.xml
+  - it is accessed at {host}
