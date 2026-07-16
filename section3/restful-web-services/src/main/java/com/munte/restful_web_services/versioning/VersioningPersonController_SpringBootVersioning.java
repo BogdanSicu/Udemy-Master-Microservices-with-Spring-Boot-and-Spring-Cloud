@@ -22,15 +22,15 @@ public class VersioningPersonController_SpringBootVersioning {
 
 
 //    Request Parameter versioning - Amazon
-    @GetMapping(path = "/person-sbi", version = "1.0.0")
-    public PersonV1 getFirstVersionOfPerson_RequestParameter() {
-        return new PersonV1("SBI v1 Bob Charlie - params");
-    }
-
-    @GetMapping(path = "/person-sbi", version = "2.0.0")
-    public PersonV2 getSecondVersionOfPerson_RequestParameter() {
-        return new PersonV2(new Name("SBI v2 Bob - params", "Charlie - params"));
-    }
+//    @GetMapping(path = "/person-sbi", version = "1.0.0")
+//    public PersonV1 getFirstVersionOfPerson_RequestParameter() {
+//        return new PersonV1("SBI v1 Bob Charlie - params");
+//    }
+//
+//    @GetMapping(path = "/person-sbi", version = "2.0.0")
+//    public PersonV2 getSecondVersionOfPerson_RequestParameter() {
+//        return new PersonV2(new Name("SBI v2 Bob - params", "Charlie - params"));
+//    }
 
 
 }

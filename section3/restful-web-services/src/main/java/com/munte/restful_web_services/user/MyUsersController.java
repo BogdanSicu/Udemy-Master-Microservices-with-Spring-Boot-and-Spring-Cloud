@@ -3,6 +3,8 @@ package com.munte.restful_web_services.user;
 import com.munte.restful_web_services.exceptions.UserNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -53,5 +55,22 @@ public class MyUsersController {
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable(name = "id") Integer myUserId) {
         service.deleteById(myUserId);
+    }
+
+    @GetMapping("/hateoas/{id}")
+    public EntityModel<MyUser> getHATEOASUserById(@PathVariable(name = "id") Integer myUserId) {
+        MyUser user = service.findOne(myUserId);
+
+        if (user == null) {
+            throw new UserNotFoundException("id:" + myUserId);
+        }
+
+        EntityModel<MyUser> entityModel = EntityModel.of(user);
+
+        WebMvcLinkBuilder link = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).getUsers());
+
+        entityModel.add(link.withRel("all-users"));
+
+        return entityModel;
     }
 }

@@ -36,3 +36,12 @@ NOTE: Spring Boot 4 has changed dependencies a little bit compared to version 3 
   - spring.mvc.apiversion.use.media-type-parameter[application/json]={name of the media-type}
     - it is very similar to *query-parameter* -> it uses the same code implementation
     - ex: headers: { key: Accept, value: application/json;version=2 }
+
+
+- HATEOAS - Hypermedia as the engine of the application state
+  - websites allow you to see *Data* and perform *Actions* using links
+- Implementation options:
+  - 1.custom format and implementation - difficult to maintain
+  - 2.use standard implementations
+    - HAL - JSON Hypertext Application Language: simple format that gives consistent and easy way to hyperlink between resources in API
+    - Spring HATEOAS: Generate HAL responses with hyperlinks to resources
