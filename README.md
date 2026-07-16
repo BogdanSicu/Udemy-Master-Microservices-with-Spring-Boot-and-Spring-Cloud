@@ -45,3 +45,8 @@ NOTE: Spring Boot 4 has changed dependencies a little bit compared to version 3 
   - 2.use standard implementations
     - HAL - JSON Hypertext Application Language: simple format that gives consistent and easy way to hyperlink between resources in API
     - Spring HATEOAS: Generate HAL responses with hyperlinks to resources
+
+
+- Monitoring APIs - add spring-boot-starter-actuator dependency inside pom.xml
+  - it is accessed at {host}/actuator
+  - for more details you can add "management.endpoints.web.exposure.include=*" inside application.properties
